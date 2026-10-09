@@ -104,12 +104,11 @@ input[type=checkbox]{width:16px;height:16px;margin:0;cursor:pointer}
 .brand small{display:block;color:var(--mut);font-size:11px;line-height:1.35;white-space:nowrap}
 
 /* Modern Project Bar Capsule */
-.proj-box{display:flex;align-items:center;flex:0 1 240px;height:36px;padding:0 4px 0 10px;background:var(--contentBs);border:1px solid var(--contentL);border-radius:10px;transition:var(--trans-2)}
+.proj-box{display:flex;align-items:center;gap:6px;flex:0 1 240px;height:36px;padding:0 6px 0 10px;background:var(--contentBs);border:1px solid var(--contentL);border-radius:10px;transition:var(--trans-2)}
 .proj-box:focus-within{border-color:var(--linkC);background:var(--contentB);box-shadow:0 0 0 3px var(--linkT)}
-.proj-icon{color:var(--linkC);font-size:13px;margin-inline-end:8px;flex:none;opacity:.85}
-.proj-box .project{flex:1;min-width:0;height:100%;border:0;background:transparent;color:var(--bodyC);outline:0;font-size:13px;font-weight:500;padding:0;box-shadow:none}
-.proj-box .proj-btn{width:28px;height:28px;border-radius:6px;font-size:12px;color:var(--iconCs);transition:var(--trans-2)}
-.proj-box .proj-btn:hover{background:var(--linkT);color:var(--linkC)}
+.proj-box .proj-btn{width:26px;height:26px;border-radius:6px;border:0;background:transparent;font-size:13px;color:var(--linkC);display:grid;place-items:center;cursor:pointer;flex:none;transition:var(--trans-2)}
+.proj-box .proj-btn:hover{background:var(--linkT);color:var(--linkC);transform:scale(1.08)}
+.proj-box .project{flex:1;min-width:0;height:100%;border:0;background:transparent;color:var(--bodyC);outline:0;font-size:13px;font-weight:600;padding:0;box-shadow:none;text-overflow:ellipsis}
 .project{flex:1;min-width:90px;max-width:400px;height:38px;margin-inline-start:6px;padding:0 12px;border:1px solid var(--contentL);border-radius:var(--linkR);background:var(--contentBa);color:var(--bodyC);outline:0;font-size:13.5px;transition:var(--trans-2)}
 .project:focus,.inp:focus,.ain:focus{border-color:var(--linkC);background:var(--contentB);box-shadow:0 0 0 3px var(--linkT)}
 .inp::placeholder,.ain::placeholder,.project::placeholder,.search input::placeholder{color:var(--mut);opacity:1}
@@ -447,7 +446,7 @@ select.ain{cursor:pointer}
 .rs-service b,.rs-service small{display:block}
 .rs-service b{font-size:13px}
 .rs-service small{margin-top:2px;color:var(--bodyC);font-size:12px;line-height:1.6;opacity:.85}
-.rs-service.checking{--clr:var(--infoC)}.rs-service.error{--clr:var(--errC)}
+.rs-service.checking{--clr:var(--infoC)}.rs-service.error{--clr:var(--errC)}.rs-service.idle{--clr:var(--mut)}
 .rs-run{min-height:48px;font-size:14px}
 .rs-progress{display:flex;gap:9px;align-items:center;margin-top:6px;padding:9px 12px;border-radius:8px;background:var(--contentBa);color:var(--mut);font-size:12.5px}
 .rs-progress span{width:9px;height:9px;flex:none;border-radius:50%;background:var(--contentLa)}
@@ -480,25 +479,27 @@ select.ain{cursor:pointer}
 @media(max-width:1000px){.chips{display:none}.proj-box{max-width:200px}.searchbox{max-width:280px}.project+.ib,.chips+.ib{margin-inline-start:auto}.rs-results-pair{grid-template-columns:1fr;width:min(760px,98vw)}}
 @media(max-width:850px){
 :root{--headerHc:var(--headerHm)}
-.top{gap:6px;padding:var(--safeT) 8px 0}
+.top{gap:6px;padding:var(--safeT) 8px 0;justify-content:space-between}
 .header-sep{display:none}
 .back-site-btn span{display:none}
-.back-site-btn{padding:0;width:34px;height:34px;justify-content:center}
-.brand img{width:34px;height:34px}
+.back-site-btn{padding:0;width:34px;height:34px;justify-content:center;border-radius:10px}
+.brand img{width:32px;height:32px;border-radius:9px}
 .brand strong{font-size:13.5px}
 #help{display:none}
-.proj-box{flex:1;min-width:80px;max-width:180px;height:34px;padding:0 2px 0 6px;margin:0}
+.proj-box{flex:0 1 auto;min-width:60px;max-width:180px;height:34px;padding:0 4px 0 8px;gap:5px;margin:0 4px}
 .proj-icon{display:none}
-.proj-box .project{font-size:12px}
+.proj-box .proj-btn{width:24px;height:24px;font-size:12px}
+.proj-box .project{font-size:12px;font-weight:600}
 .project{height:34px;min-width:0;margin:0;font-size:12px}
-.header-actions{gap:3px;flex:none}
-.header-actions .ib{width:32px;height:32px;font-size:13px}
-.ib{width:34px;height:34px;font-size:14px}
+.header-actions{display:flex;align-items:center;gap:4px;margin-inline-start:auto;flex:none}
+.header-actions .ib{width:32px;height:32px;border:1px solid var(--contentL);border-radius:9px;background:var(--contentBs);font-size:13px}
+.header-actions .ib:disabled{opacity:.35;background:var(--contentBs);border-color:var(--contentL)}
 .searchbox{position:fixed;top:calc(var(--hdr) + 8px);left:10px;right:10px;width:auto;margin:0;z-index:1700}
-.search{height:40px;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:0 8px 30px -4px rgba(0,0,0,.1)}
+.search{height:40px;padding:0;padding-inline-start:12px;padding-inline-end:10px;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:0 6px 24px -4px rgba(0,0,0,.12);border-radius:20px}
 .drK .search{background:rgba(30,32,36,.94)}
 .search input{font-size:12.5px}
 .search input::placeholder{font-size:11.5px}
+.search .search-submit{display:none}
 /* Plus UI mobile menu (bottom bar) */
 .dock.r{top:auto;right:0;bottom:0;left:0;transform:none;flex-direction:row;padding:6px 8px calc(6px + var(--safe));border-top:1px solid var(--contentL);border-radius:16px 16px 0 0;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:0 -5px 25px rgb(0 0 0 / 6%)}
 .drK .dock.r{background:rgba(30,32,36,.94);border-color:rgba(255,255,255,.1)}
@@ -508,9 +509,9 @@ select.ain{cursor:pointer}
 .dock.r .dg:last-child{display:none}
 .dock.r .db{flex:0 0 42px;width:42px;height:42px}
 .db:after{display:none}
-.dock.l{top:calc(var(--hdr) + 62px);left:10px;transform:none}
+.dock.l{top:calc(var(--hdr) + 64px);left:10px;transform:none}
 .dock.l .dg{padding:4px;border-radius:14px}
-.dock.l .db{width:38px;height:38px;font-size:15px}
+.dock.l .db{width:36px;height:36px;font-size:14px}
 .panel{top:auto;right:0;bottom:0;left:0;width:100%;max-height:80vh;padding-bottom:calc(16px + var(--safe));border-bottom:0;border-radius:18px 18px 0 0}
 .panel.on{animation:sup .22s ease}
 .chart{right:0;bottom:0;left:0;transform:none;width:100%;height:50vh;min-height:340px;padding-bottom:calc(12px + var(--safe));border-bottom:0;border-radius:18px 18px 0 0}
@@ -528,7 +529,7 @@ select.ain{cursor:pointer}
 .overlay{padding:10px}
 .tablebar{flex-wrap:wrap}.tablebar .inp{flex:1 1 100%}
 }
-@media(max-width:480px){.brand div{display:none}.embedded .brand{display:none}.toolgrid{grid-template-columns:1fr}.dock.r .db{flex-basis:40px;width:40px;height:40px}}
+@media(max-width:480px){.brand div{display:none}#redo{display:none}.toolgrid{grid-template-columns:1fr}.dock.r .db{flex-basis:40px;width:40px;height:40px}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 
@@ -542,13 +543,12 @@ select.ain{cursor:pointer}
   <div class="brand"><img src="fmtopo-icon-192.png" alt="FMTopo Pro"><div><strong>FMTopo Pro <span class="brand-badge">PRO</span></strong><small>منصة نظم المعلومات الجغرافية والاستشعار عن بعد</small></div></div>
   <div class="header-sep"></div>
   <div class="proj-box">
-    <i class="fa-solid fa-map-location-dot proj-icon"></i>
-    <input id="projectName" class="project" value="مشروع جغرافي جديد" maxlength="80" aria-label="اسم المشروع">
     <button id="openProjectMgr" class="ib proj-btn" title="مكتبة وإدارة المشاريع"><i class="fa-solid fa-folder-open"></i></button>
+    <input id="projectName" class="project" value="مشروع جغرافي جديد" maxlength="80" aria-label="اسم المشروع">
   </div>
 
   <div class="searchbox">
-    <form id="searchForm" class="search"><i class="fa-solid fa-magnifying-glass search-icon"></i><input id="searchInput" type="search" minlength="3" placeholder="بحث عن مدينة، إحداثيات أو موقع..." autocomplete="off"><button class="search-submit" title="بحث (Enter)"><i class="fa-solid fa-arrow-left"></i></button></form>
+    <form id="searchForm" class="search"><i class="fa-solid fa-magnifying-glass search-icon"></i><input id="searchInput" type="search" minlength="3" placeholder="بحث في الخريطة أو إحداثيات..." autocomplete="off"><button class="search-submit" title="بحث (Enter)"><i class="fa-solid fa-arrow-left"></i></button></form>
     <div id="searchResults" class="results"></div>
   </div>
 
@@ -678,7 +678,7 @@ select.ain{cursor:pointer}
     <div class="row"><input id="rsCloudMax" class="inp" type="number" min="0" max="100" value="20" placeholder="أقصى نسبة سحب %"><select id="rsComposite" class="inp"><option value="median">Median – الوسيط السنوي</option><option value="least_cloudy">أقل المشاهد سحباً</option></select></div>
     <div id="indexRoles" class="note"></div>
 
-    <div id="rsServiceStatus" class="rs-service checking"><i class="fa-solid fa-server"></i><div><b>الاتصال بخادم المعالجة يتم تلقائياً</b><small id="rsServiceText">جاري التحقق من خدمة Google Earth Engine…</small></div></div>
+    <div id="rsServiceStatus" class="rs-service idle"><i class="fa-solid fa-cloud"></i><div><b>خدمة التحليل السحابي (GEE)</b><small id="rsServiceText">غير مهيأة حالياً. تتطلب تحديد رابط الخادم في إعدادات المنصة.</small></div></div>
     <button id="runRemoteIndex" class="btn pri rs-run"><i class="fa-solid fa-play"></i> Run — جلب الصورة وحساب المؤشر</button>
     <div id="rsProgress" class="rs-progress"><span></span><b>جاهز للمعالجة</b></div>
   </section>
@@ -775,12 +775,8 @@ select.ain{cursor:pointer}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.11.0/proj4.js"></script>
 
 <script type="module">
-import{initializeApp}from"https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
-import{getAuth,onAuthStateChanged,createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile,signOut}from"https://www.gstatic.com/firebasejs/12.16.0/firebase-auth.js";
-import{getDatabase,ref,get,update,serverTimestamp}from"https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
-const cfg={apiKey:"AIzaSyBHjDSoCDrZAh9KIW1LI4H6XxIdeB8YnFw",authDomain:"rusle-462022.firebaseapp.com",databaseURL:"https://rusle-462022-default-rtdb.firebaseio.com",projectId:"rusle-462022",storageBucket:"rusle-462022.firebasestorage.app",messagingSenderId:"106974487623",appId:"1:106974487623:web:f42e4cf7fd2e2218947d62"};
-let app=null,auth=null,db=null;try{app=initializeApp(cfg);auth=getAuth(app);db=getDatabase(app)}catch(e){console.error(e)}
+let app=null,auth=null,db=null;
 const MAXH=40,LABELZ=14,PID="default";let user=null,guest=true,loginMode=false,crs=$("#crs").value,base=null,drawHandler=null,drawType=null,pending=null,editHandler=null,erasing=false,restoring=false,lastLayer=null,chartObj=null,searchCtl=null,lastSearch=0;const elevCache=new Map(),hist=[];let hi=-1;const rasterRegistry=[],photoRegistry=new Map();let activeRaster=null,rasterSampleMode=false,miniMapObj=null,miniRect=null,gpsWatch=null,lastGps=null,trackWatch=null,trackPoints=[],trackLayer=null,joinRows=null,currentProjectId=localStorage.getItem("fmtopo_active_id")||"proj_default";
 const E={save:$("#saveChip"),count:$("#countChip"),list:$("#layerList"),back:$("#back"),feature:$("#featureModal"),confirm:$("#confirmModal"),chart:$("#chart"),loader:$("#chartLoader"),auth:$("#auth"),results:$("#searchResults"),undo:$("#undo"),redo:$("#redo")};
 const debounce=(fn,d=500)=>{let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),d)}};const rafThrottle=fn=>{let s=false,a;return(...x)=>{a=x;if(s)return;s=true;requestAnimationFrame(()=>{s=false;fn(...a)})}};
@@ -888,8 +884,8 @@ function setRsProgress(text,state=""){const e=$("#rsProgress");e.className=`rs-p
 function selectedRsAoi(){const chosen=layerByStamp($("#rsAoiSelect").value);if(chosen&&type(chosen)==="Polygon")return chosen;return[...layers.getLayers()].reverse().find(l=>type(l)==="Polygon")||null}
 function refreshRsAoi(){const e=$("#rsAoiSelect");if(!e)return;const old=e.value,polys=layers.getLayers().filter(l=>type(l)==="Polygon");e.replaceChildren();const z=document.createElement("option");z.value="";z.textContent=polys.length?"اختر مضلع مجال الدراسة":"ارسم أو استورد مضلعاً أولاً";e.append(z);polys.forEach((l,i)=>{const o=document.createElement("option");o.value=L.stamp(l);o.textContent=l.customName||`مجال الدراسة ${i+1}`;e.append(o)});if([...e.options].some(o=>o.value===old))e.value=old;else if(polys.length)e.value=L.stamp(polys.at(-1))}
 const FMTOPO_RS_API=String(document.querySelector('meta[name="fmtopo-rs-api"]')?.content||"").trim().replace(/\/$/,"");
-function rsApiBase(){if(FMTOPO_RS_API)return FMTOPO_RS_API;if(location.protocol==="http:"||location.protocol==="https:")return location.origin.replace(/\/$/,"");return""}
-async function checkRsService(){const box=$("#rsServiceStatus"),label=$("#rsServiceText"),api=rsApiBase();if(!box||!label)return;if(!api){box.className="rs-service error";box.querySelector("i").className="fa-solid fa-triangle-exclamation";label.textContent="شغّل المنصة عبر HTTPS واربط الخادم من إعدادات الموقع العامة.";return}box.className="rs-service checking";box.querySelector("i").className="fa-solid fa-spinner fa-spin";label.textContent="جاري التحقق من خدمة المعالجة…";const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);try{const r=await fetch(`${api}/health`,{cache:"no-store",signal:controller.signal});const d=await r.json().catch(()=>({}));if(!r.ok||d.ok===false)throw Error(d.error||`HTTP ${r.status}`);box.className="rs-service";box.querySelector("i").className="fa-solid fa-circle-check";label.textContent="الخدمة جاهزة؛ لا يحتاج الطالب إلى إدخال أي رابط."}catch(e){box.className="rs-service error";box.querySelector("i").className="fa-solid fa-circle-exclamation";label.textContent="الخدمة غير متاحة حالياً. تواصل مع مدير المنصة."}finally{clearTimeout(timer)}}
+function rsApiBase(){return FMTOPO_RS_API||""}
+async function checkRsService(){const box=$("#rsServiceStatus"),label=$("#rsServiceText"),api=rsApiBase();if(!box||!label)return;const icon=box.querySelector("i"),title=box.querySelector("b");if(!api){box.className="rs-service idle";if(icon)icon.className="fa-solid fa-cloud";if(title)title.textContent="خدمة التحليل السحابي (GEE)";label.textContent="غير مهيأة حالياً. تتطلب تحديد رابط الخادم في إعدادات المنصة.";return}box.className="rs-service checking";if(icon)icon.className="fa-solid fa-spinner fa-spin";if(title)title.textContent="الاتصال بخادم المعالجة";label.textContent="جاري التحقق من خدمة المعالجة…";const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);try{const r=await fetch(`${api}/health`,{cache:"no-store",signal:controller.signal});const d=await r.json().catch(()=>({}));if(!r.ok||d.ok===false)throw Error(d.error||`HTTP ${r.status}`);box.className="rs-service";if(icon)icon.className="fa-solid fa-circle-check";if(title)title.textContent="خادم المعالجة جاهز";label.textContent="الخدمة متصلة وتعمل بصورة صحيحة."}catch(e){box.className="rs-service error";if(icon)icon.className="fa-solid fa-circle-exclamation";if(title)title.textContent="خادم المعالجة غير متاح";label.textContent="تعذر الاتصال بالخادم. تواصل مع مدير المنصة."}finally{clearTimeout(timer)}}
 function openRsModal(id){$(id).classList.add("on")}
 function closeRsModal(id){$(id).classList.remove("on")}
 function rsMetaHtml(data){const items=[[data.year,"السنة"],[data.satellite_label||data.satellite,"القمر"],[data.image_count??"—","المشاهد"],[`${data.export_scale_m??data.native_scale_m??"—"} م`,`دقة TIFF`]];return items.map(([v,k])=>`<div><b>${String(v??"—")}</b><small>${k}</small></div>`).join("")}
