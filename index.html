@@ -89,8 +89,13 @@ input[type=checkbox]{width:16px;height:16px;margin:0;cursor:pointer}
 /* ---------- Header (Flagship Modern Glassmorphism) ---------- */
 .top{position:fixed;z-index:1800;top:0;left:0;right:0;height:var(--hdr);display:flex;align-items:center;gap:12px;padding:var(--safeT) 16px 0;background:rgba(255,255,255,.8);-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);color:var(--headerC);border-bottom:1px solid rgba(0,0,0,.07);box-shadow:0 4px 20px -2px rgba(0,0,0,.05);transition:background .25s ease,border-color .25s ease}
 .drK .top{background:rgba(24,26,30,.85);border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 4px 24px -2px rgba(0,0,0,.4)}
-.embedded .top{padding-left:176px}
 .header-sep{width:1px;height:24px;background:var(--contentL);margin:0 2px;flex:none}
+.back-site-btn{display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 11px;border:1px solid var(--contentL);border-radius:10px;background:var(--contentBs);color:var(--bodyC);text-decoration:none;font-size:12.5px;font-weight:600;transition:all .2s cubic-bezier(0.4,0,0.2,1);flex:none;white-space:nowrap;user-select:none}
+.back-site-btn:hover{background:var(--linkT);border-color:var(--linkC);color:var(--linkC);transform:translateY(-1px);box-shadow:0 3px 10px rgba(69,165,87,.15)}
+.back-site-btn i{font-size:13px;color:var(--linkC);transition:transform .2s ease}
+.back-site-btn:hover i{transform:scale(1.15)}
+.drK .back-site-btn{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);color:var(--headC)}
+.drK .back-site-btn:hover{background:var(--linkT);border-color:var(--linkC);color:var(--linkC)}
 .brand{display:flex;align-items:center;gap:10px;flex:none;min-width:0;user-select:none}
 .brand img{width:38px;height:38px;object-fit:cover;border-radius:11px;border:1px solid var(--contentL);box-shadow:0 2px 8px rgba(0,0,0,.06);transition:transform .2s ease}
 .brand:hover img{transform:scale(1.05)}
@@ -110,15 +115,18 @@ input[type=checkbox]{width:16px;height:16px;margin:0;cursor:pointer}
 .inp::placeholder,.ain::placeholder,.project::placeholder,.search input::placeholder{color:var(--mut);opacity:1}
 
 /* Centered Spotlight Search in Header */
-.searchbox{position:relative;flex:0 1 380px;margin:0 auto}
-.search{height:36px;display:flex;gap:6px;align-items:center;padding:0 4px 0 12px;border:1px solid var(--contentL);border-radius:20px;background:var(--contentBs);transition:var(--trans-2)}
+.searchbox{position:relative;flex:1;max-width:440px;min-width:200px;margin:0 auto}
+.search{height:38px;display:flex;gap:8px;align-items:center;padding:0;padding-inline-start:12px;padding-inline-end:6px;border:1px solid var(--contentL);border-radius:12px;background:var(--contentBs);transition:var(--trans-2)}
 .drK .search{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}
 .search:focus-within{border-color:var(--linkC);background:var(--contentB);box-shadow:0 0 0 3px var(--linkT)}
-.search-icon{color:var(--iconCs);font-size:12px;flex:none}
-.search input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--bodyC);font-size:13px;font-weight:500}
+.search-icon{color:var(--mut);font-size:13px;flex:none;transition:color .2s ease}
+.search:focus-within .search-icon{color:var(--linkC)}
+.search input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--bodyC);font-size:13px;font-weight:500;padding:0}
+.search input::placeholder{color:var(--mut);opacity:.75}
 .search input::-webkit-search-cancel-button{cursor:pointer}
-.search .search-submit{width:28px;height:28px;flex:none;border:0;border-radius:50%;background:linear-gradient(135deg,#45a557,#388e3c);color:#fff;cursor:pointer;transition:var(--trans-2);display:grid;place-items:center;font-size:11px}
-.search .search-submit:hover{transform:scale(1.08);box-shadow:0 2px 8px rgba(69,165,87,.4)}
+.search .search-submit{width:28px;height:28px;flex:none;border:1px solid var(--contentL);border-radius:8px;background:var(--contentB);color:var(--iconCs);cursor:pointer;transition:var(--trans-2);display:grid;place-items:center;font-size:11px}
+.drK .search .search-submit{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.1)}
+.search .search-submit:hover{background:var(--linkT);border-color:var(--linkC);color:var(--linkC);transform:scale(1.05)}
 .results{position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:2500;display:none;max-height:320px;overflow:auto;padding:8px;border:1px solid var(--contentL);border-radius:14px;background:var(--contentB);color:var(--mut);font-size:13px;box-shadow:var(--bs-2);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
 .drK .results{background:rgba(28,30,34,.95);border-color:rgba(255,255,255,.1)}
 .results.on{display:block}
@@ -472,20 +480,25 @@ select.ain{cursor:pointer}
 @media(max-width:1000px){.chips{display:none}.proj-box{max-width:200px}.searchbox{max-width:280px}.project+.ib,.chips+.ib{margin-inline-start:auto}.rs-results-pair{grid-template-columns:1fr;width:min(760px,98vw)}}
 @media(max-width:850px){
 :root{--headerHc:var(--headerHm)}
-.top{gap:8px;padding:var(--safeT) 10px 0}
-.embedded .top{padding-left:118px}
+.top{gap:6px;padding:var(--safeT) 8px 0}
 .header-sep{display:none}
+.back-site-btn span{display:none}
+.back-site-btn{padding:0;width:34px;height:34px;justify-content:center}
 .brand img{width:34px;height:34px}
-.brand strong{font-size:14px}
+.brand strong{font-size:13.5px}
 #help{display:none}
-.proj-box{flex:1;height:34px;padding:0 2px 0 8px;margin-inline-start:4px;max-width:none}
+.proj-box{flex:1;min-width:80px;max-width:180px;height:34px;padding:0 2px 0 6px;margin:0}
 .proj-icon{display:none}
-.proj-box .project{font-size:12.5px}
-.project{height:34px;min-width:0;margin:0;font-size:12.5px}
+.proj-box .project{font-size:12px}
+.project{height:34px;min-width:0;margin:0;font-size:12px}
+.header-actions{gap:3px;flex:none}
+.header-actions .ib{width:32px;height:32px;font-size:13px}
 .ib{width:34px;height:34px;font-size:14px}
 .searchbox{position:fixed;top:calc(var(--hdr) + 8px);left:10px;right:10px;width:auto;margin:0;z-index:1700}
-.search{height:42px;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:0 8px 30px -4px rgba(0,0,0,.1)}
+.search{height:40px;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:0 8px 30px -4px rgba(0,0,0,.1)}
 .drK .search{background:rgba(30,32,36,.94)}
+.search input{font-size:12.5px}
+.search input::placeholder{font-size:11.5px}
 /* Plus UI mobile menu (bottom bar) */
 .dock.r{top:auto;right:0;bottom:0;left:0;transform:none;flex-direction:row;padding:6px 8px calc(6px + var(--safe));border-top:1px solid var(--contentL);border-radius:16px 16px 0 0;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:0 -5px 25px rgb(0 0 0 / 6%)}
 .drK .dock.r{background:rgba(30,32,36,.94);border-color:rgba(255,255,255,.1)}
@@ -524,6 +537,8 @@ select.ain{cursor:pointer}
 <div id="map"></div><div id="miniMap"><div class="minicap">خريطة التموقع</div></div><div id="legendBox"><h4><span>مفتاح الخريطة</span><button id="closeLegend" class="close" style="width:22px;height:22px"><i class="fa-solid fa-xmark"></i></button></h4><div id="legendItems"></div></div>
 
 <header class="top">
+  <a id="backToSite" href="https://www.amegdt.com" target="_top" class="back-site-btn" title="الرئيسية (www.amegdt.com)"><i class="fa-solid fa-house"></i><span>Home</span></a>
+  <div class="header-sep"></div>
   <div class="brand"><img src="fmtopo-icon-192.png" alt="FMTopo Pro"><div><strong>FMTopo Pro <span class="brand-badge">PRO</span></strong><small>منصة نظم المعلومات الجغرافية والاستشعار عن بعد</small></div></div>
   <div class="header-sep"></div>
   <div class="proj-box">
@@ -533,7 +548,7 @@ select.ain{cursor:pointer}
   </div>
 
   <div class="searchbox">
-    <form id="searchForm" class="search"><i class="fa-solid fa-magnifying-glass search-icon"></i><input id="searchInput" type="search" minlength="3" placeholder="بحث عن مدينة، قرية، إحداثيات أو موقع..."><button class="search-submit" title="بحث"><i class="fa-solid fa-arrow-left"></i></button></form>
+    <form id="searchForm" class="search"><i class="fa-solid fa-magnifying-glass search-icon"></i><input id="searchInput" type="search" minlength="3" placeholder="بحث عن مدينة، إحداثيات أو موقع..." autocomplete="off"><button class="search-submit" title="بحث (Enter)"><i class="fa-solid fa-arrow-left"></i></button></form>
     <div id="searchResults" class="results"></div>
   </div>
 
@@ -931,6 +946,7 @@ user=null;guest=true;E.auth?.classList.add("hide");$("#displayName").textContent
 $$(".trig").forEach(b=>b.onclick=()=>$("#"+b.dataset.panel).classList.contains("on")?closePanels():openPanel(b.dataset.panel));$$(".close").forEach(b=>b.onclick=closePanels);E.back.onclick=closePanels;$$(".draw").forEach(b=>b.onclick=()=>startDraw(b.dataset.draw));$("#stopDraw").onclick=()=>stopDraw();$("#saveFeature").onclick=saveFeature;$("#cancelFeature").onclick=cancelFeature;E.feature.onclick=e=>{if(e.target===E.feature)cancelFeature()};$("#zin").onclick=()=>map.zoomIn();$("#zout").onclick=()=>map.zoomOut();$("#locate").onclick=()=>map.locate({setView:true,maxZoom:17,enableHighAccuracy:true,timeout:12000});$("#eraser").onclick=()=>toggleErase();$("#clearAll").onclick=async()=>{if(layers.getLayers().length&&await ask("حذف جميع العناصر؟")){layers.clearLayers();lastLayer=null;commit();toast("تم المسح","ok")}};$("#logout").onclick=$("#logout2").onclick=doLogout;E.undo.onclick=undo;E.redo.onclick=redo;
 $("#crs").onchange=e=>{crs=e.target.value;layers.eachLayer(popup);scheduleSave();toast(`تم اعتماد ${crs}`,"ok",1500)};$("#basemap").onchange=e=>changeBase(e.target.value);$("#gotoXY").onclick=gotoXY;$("#gotoLL").onclick=gotoLL;$("#showAll").onclick=()=>{layers.eachLayer(l=>visible(l,true,false));commit()};$("#hideAll").onclick=()=>{layers.eachLayer(l=>visible(l,false,false));commit()};$("#buffer").onclick=buffer;$("#profile").onclick=profile;$("#street").onclick=street;$("#edit").onclick=startEdit;$("#finishEdit").onclick=finishEdit;$("#import").onclick=()=>$("#file").click();$("#file").onchange=e=>e.target.files[0]&&importFile(e.target.files[0]);$("#excel").onclick=excel;$("#csv").onclick=csv;$("#geojson").onclick=()=>geo();$("#backup").onclick=()=>geo("_backup");$("#kml").onclick=kml;$("#kmz").onclick=kmz;$("#dxf").onclick=dxf;$("#shot").onclick=shot;$("#closeChart").onclick=()=>E.chart.classList.remove("on");$("#downChart").onclick=()=>{if(chartObj){const a=document.createElement("a");a.href=chartObj.toBase64Image();a.download=`${slug($("#projectName").value)}_profil.png`;a.click()}};$("#searchForm").onsubmit=e=>{e.preventDefault();search($("#searchInput").value)};document.onclick=e=>{if(!e.target.closest(".searchbox"))E.results.classList.remove("on")};$("#projectName").oninput=debounce(()=>{capture();scheduleSave()},500);$("#authForm").onsubmit=authSubmit;$("#guest").onclick=asGuest;$("#authSwitch").onclick=()=>setAuthMode(!loginMode);$("#help").onclick=()=>toast("ابدأ بإضافة البيانات أو رسم مجال الدراسة، ثم استخدم وحدات Raster والتحليل المكاني والعمل الميداني ومصمم الخرائط.","info",5000);
 $("#themeToggle")&&($("#themeToggle").onclick=()=>window.fmTheme?.toggle());
+$("#backToSite")&&($("#backToSite").onclick=e=>{try{if(window.top&&window.top!==window.self){e.preventDefault();window.top.location.href="https://www.amegdt.com"}}catch(err){}});
 
 $$('.tab').forEach(b=>b.onclick=()=>{const panel=b.closest('.panel');$$('.tab',panel).forEach(x=>x.classList.remove('on'));$$('.tabpage',panel).forEach(x=>x.classList.remove('on'));b.classList.add('on');$('#'+b.dataset.tab).classList.add('on')});
 $('#attributeTable').onclick=openAttributeTable;$('#closeTable').onclick=()=>$('#tableModal').classList.remove('on');$('#tableFilter').oninput=e=>filterAttributeTable(e.target.value);$('#addField').onclick=addAttributeField;$('#tableExcel').onclick=excel;$('#toggleLegend').onclick=()=>{updateLegend();$('#legendBox').classList.toggle('on')};$('#closeLegend').onclick=()=>$('#legendBox').classList.remove('on');$('#toggleMiniMap').onclick=toggleMini;$('#printComposer').onclick=openPrint;$('#closePrint').onclick=()=>$('#printModal').classList.remove('on');$('#buildPrint').onclick=buildPrint;$('#downloadPrint').onclick=downloadPrint;
